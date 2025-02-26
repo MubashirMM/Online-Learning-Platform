@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tutorial</title>
+    <base href="/">
+    <link rel="stylesheet" href="html-page.css">
+</head>
+<body>
+    <!-- Menu Toggle Button (Visible on Small Screens) -->
+    <button id="menu-toggle">Menu</button>
+
+    <nav class="html-menu">
+        <ol>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/home.html', 'content'); setActive(this);">HTML Home</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/introduction.html', 'html-content'); setActive(this);">HTML Introduction</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/editors.html', 'html-content'); setActive(this);">HTML Editors</a></li>
+        </ol>
+    </nav>
+
+    <div id="html-content">
+        <h1>Welcome to HTML Tutorial</h1>
+        <p>Select a topic from the menu.</p>
+    </div>
+
+    <script>
+        // Function to set active state on menu items
+        function setActive(clickedElement) {
+            document.querySelectorAll('.html-menu ol li a').forEach(item => {
+                item.classList.remove('active');
+            });
+            clickedElement.classList.add('active');
+        }
+    </script>
+    <script src="../refreshPage.js"></script>
+</body>
+</html>

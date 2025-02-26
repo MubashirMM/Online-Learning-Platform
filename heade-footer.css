@@ -1,0 +1,41 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', Arial, Helvetica, sans-serif;
+    background: #F8FAFC;
+    overscroll-behavior: none;
+  }
+  
+  /* Header */
+  .header {
+    background: #F8FAFC;
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 0px 2px 2px #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    z-index: 1000;
+  }
+  
+  /* Footer */
+  .footer {
+    position: relative;
+    background: rgb(69, 67, 67);
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: white;
+  }
+  
+::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background: rgb(204, 207, 204);
+}

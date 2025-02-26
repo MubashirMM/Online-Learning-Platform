@@ -1,0 +1,212 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', Arial, Helvetica, sans-serif;
+  background: #F8FAFC;
+  overscroll-behavior: none;
+}
+
+#content {
+  margin-top: 80px;
+}
+
+/* Responsive Header */
+.header {
+  background: #F8FAFC;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 0px 2px 2px #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  z-index: 1000;
+}
+
+/* Navigation Menu */
+.navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.navbar-toggler {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  color: #1F2937;
+}
+
+.navbar-menu li a:hover {
+  color: #FACC15;
+}
+
+@media (max-width: 768px) {
+  .navbar-toggler {
+      display: block;
+  }
+  
+  .navbar-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      background: #F8FAFC;
+      text-align: center;
+  }
+
+  .navbar-menu.active {
+      display: flex;
+  }
+}
+
+/* Responsive Sections */
+#home, #contact, #Tutorials, #about {
+  padding-top: 40px;
+  text-align: center;
+}
+
+/* Responsive Slider */
+.slider-container {
+  margin-top: 80px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  height: 500px;
+  max-height: 500px;
+  background: #d4e8fc;
+}
+
+.slider-container h2 {
+  padding-left: 10px;
+}
+
+.slider {
+  margin-top: 2px;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 20px;
+  padding: 50px;
+}
+
+.card {
+  flex: 0 0 calc(100% / 3);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .card {
+      flex: 0 0 100%;
+  }
+}
+
+/* Responsive Buttons */
+.btn1, .btn2, .btn3, #run-btn {
+  background-color: rgb(36, 4, 243);
+  border: none;
+  border-radius: 30px;
+  width: 200px;
+  height: 50px;
+  margin-top: 15px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.btn1:hover, .btn2:hover, .btn3:hover, #run-btn:hover {
+  background-color: rgb(97, 97, 242);
+}
+
+/* Responsive Footer */
+.footer {
+  position: relative;
+  background: rgb(69, 67, 67);
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', Arial, Helvetica, sans-serif;
+  background: #F8FAFC;
+  overscroll-behavior: none;
+}
+
+/* Navbar Styling */
+.navbar {
+  background: #F8FAFC;
+  box-shadow: 0px 0px 2px 2px #bbb;
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1F2937;
+}
+
+.navbar-nav .nav-item .nav-link {
+  font-size: 1.2rem;
+  color: #1F2937;
+  margin-right: 20px;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+  color: #FACC15;
+}
+
+/* Main Content */
+#content {
+  margin-top: 80px;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  background: #454343;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  position: relative;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .navbar {
+      padding: 10px;
+  }
+  .navbar-nav .nav-item {
+      text-align: center;
+  }
+}
