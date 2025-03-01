@@ -6,6 +6,8 @@
     padding: 40px;
     background: #d6d5f5;
     flex-wrap: wrap;
+    max-width: 100vw;
+    overflow: hidden;
 }
 
 /* Make it a column layout for small screens */
@@ -16,10 +18,10 @@
     }
 }
 
-.text {
+.text, .code-container {
     flex: 1;
-    min-width: 300px;
-    text-align: center;
+    width: 100%;
+    min-width: 0; /* Prevent breaking layout */
 }
 
 .text .title {
@@ -33,7 +35,7 @@
     color: #666;
 }
 
-.text button {
+.text button, #run-btn {
     display: block;
     margin: 10px auto;
     padding: 10px 20px;
@@ -44,36 +46,24 @@
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
-    width: 80%;
+    width: 100%;
+    max-width: 250px;
 }
 
-/* Adjust button width on large screens */
-@media (min-width: 1024px) {
-    .text button {
-        width: 50%;
-    }
-}
-
-/* Code Section */
 .code-container {
-    flex: 1;
-    min-width: 350px;
+    min-width: auto;
+    width: 90%;
     background: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
-/* Adjust width on small screens */
+
 @media (max-width: 600px) {
     .code-container {
         width: 90%;
     }
-}
-
-.code-container h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
 }
 
 .code {
@@ -83,137 +73,4 @@
     border-radius: 5px;
     overflow-x: auto;
     text-align: left;
-}
-
-#run-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 80%;
-}
-
-/* Adjust run button width on large screens */
-@media (min-width: 1024px) {
-    #run-btn {
-        width: 50%;
-    }
-}
-
-#run-btn:hover {
-    background: #218838;
-}  .html-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    padding: 40px;
-    background: #d6d5f5;
-    flex-wrap: wrap;
-}
-
-/* Make it a column layout for small screens */
-@media (max-width: 768px) {
-    .html-container {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-
-.text {
-    flex: 1;
-    min-width: 300px;
-    text-align: center;
-}
-
-.text .title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-}
-
-.text .description {
-    font-size: 1.2rem;
-    color: #666;
-}
-
-.text button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 80%;
-}
-
-/* Adjust button width on large screens */
-@media (min-width: 1024px) {
-    .text button {
-        width: 50%;
-    }
-}
-
-/* Code Section */
-.code-container {
-    flex: 1;
-    min-width: 350px;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-/* Adjust width on small screens */
-@media (max-width: 600px) {
-    .code-container {
-        width: 90%;
-    }
-}
-
-.code-container h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.code {
-    background: #282c34;
-    color: #ffffff;
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-    text-align: left;
-}
-
-#run-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 80%;
-}
-
-/* Adjust run button width on large screens */
-@media (min-width: 1024px) {
-    #run-btn {
-        width: 50%;
-    }
-}
-
-#run-btn:hover {
-    background: #218838;
 }

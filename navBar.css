@@ -86,42 +86,42 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {
-      flex-direction: column;
-      align-items: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .navbar-menu {
-      flex-direction: column;
-      width: auto; /* Allows the menu to adjust width */
-      padding-left: 0;
+    flex-direction: column;
+    width: auto; /* Allows the menu to adjust width */
+    padding-left: 0;
   }
 
   .navbar-menu li {
-      width: 100%;
+    width: 100%;
   }
 
   /* Make sure submenus are accessible */
   .submenu {
-      position: static;
-      display: none;
-      width: 70%;
+    position: static;
+    display: none;
+    width: 70%;
   }
 
   .navbar-menu li:focus-within .submenu,
   .navbar-menu li:hover .submenu {
-      display: block;
+    display: block;
   }
 
   /* Keep nested submenu working */
   .submenu .submenu-videos {
-      position: static;
-      display: none;
-      width: 100%;
+    position: static;
+    display: none;
+    width: 100%;
   }
 
   .submenu li:focus-within .submenu-videos,
   .submenu li:hover .submenu-videos {
-      display: block;
+    display: block;
   }
 }
 
@@ -153,20 +153,36 @@
   background-color: #f0f0f0;
 }
 
-/* Quiz & Exercise Dropdown */
 #quiz-exercise {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 100%; /* Position below the parent menu item */
   left: 0;
   background: white;
   list-style: none;
   padding: 10px 0;
   min-width: 150px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it appears above other elements */
 }
 
 .navbar-menu li:hover #quiz-exercise,
 .navbar-menu li:focus-within #quiz-exercise {
   display: block;
+  margin-top: 10px; /* Add space between the dropdown and the menu item */
+}
+
+/* Adjust for Small Screens */
+@media (max-width: 768px) {
+  #quiz-exercise {
+    position: static; /* Make dropdown flow naturally in the document */
+    width: 100%; /* Full width for small screens */
+    margin-top: 0; /* Reset margin for small screens */
+  }
+
+  .navbar-menu li:hover #quiz-exercise,
+  .navbar-menu li:focus-within #quiz-exercise {
+    display: block;
+    margin-top: 0; /* Reset margin for small screens */
+  }
 }

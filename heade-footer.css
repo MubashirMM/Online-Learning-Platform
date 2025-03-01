@@ -1,10 +1,13 @@
 /* Global Styles */
-
 html, body {
   height: 100%; 
   overscroll-behavior: none;
-  
+  /* overflow-x: hidden; */
 }
+  * {
+    /* outline: 1px solid red; */
+}
+
 
 .wrapper {
   display: flex;
@@ -16,32 +19,43 @@ html, body {
   flex: 1; /* Pushes the footer down */
 }
 
-
-
-.footer {
+.footer-container {
   background: rgb(69, 67, 67);
   width: 100%;
   text-align: center;
   padding: 20px;
   color: white;
-}
-  
-  .footer {
-    font-size: 16px;
-    line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-@media (max-width: 768px) {
-    .footer {
-        font-size: 14px;
-        padding: 15px;
-    }
-}
-
-  
-::-webkit-scrollbar{
+/* Scrollbar Styles */
+::-webkit-scrollbar {
   width: 12px;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
   background: rgb(204, 207, 204);
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+  .footer-container {
+    font-size: 14px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 375px) {
+  .footer-container {
+    font-size: 12px; /* Smaller font size for 375px screens */
+    padding: 10px; /* Reduced padding for 375px screens */
+  }
+}
+
+@media (max-width: 320px) {
+  .footer-container {
+    font-size: 11px; /* Smaller font size for 320px screens */
+    padding: 8px; /* Reduced padding for 320px screens */
+  }
 }
