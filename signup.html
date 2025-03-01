@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 2px solid gray;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        input:focus {
+            border-color: green;
+            box-shadow: 0 0 8px rgba(0, 255, 0, 0.5);
+        }
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .btn {
+            width: 48%;
+            padding: 10px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: #555;
+        }
+        #teacherFields {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>User Registration</h2>
+        <div class="btn-group">
+            <button class="btn" onclick="showForm('student')">Student</button>
+            <button class="btn" onclick="showForm('teacher')">Teacher</button>
+        </div>
+        <form id="mainForm">
+            <label>Enter your Name:</label>
+            <input type="text" id="name" required>
+            <p id="message" style="color: red;"></p>
+            
+            <label>Enter Password:</label>
+            <input type="password" id="password" required>
+            <p id="Pmessage" style="color: red;"></p>
+            
+            <label>Re-Type Password:</label>
+            <input type="password" id="Rpassword" required>
+            <p id="Rmessage" style="color: red;"></p>
+            
+            <label>E-Mail:</label>
+            <input type="email" id="email" required>
+            <p id="Emessage" style="color: red;"></p>
+            
+            <div id="teacherFields">
+                <label>Qualifications:</label>
+                <input type="text" id="qualification">
+                
+                <label>Certifications:</label>
+                <input type="file" id="certification">
+            </div>
+            
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+    
+    <script>
+        function setBorderColor(element, isValid) {
+            element.style.borderColor = isValid ? "green" : "red";
+        }
+
+        function validateName() {
+            const name = nameInput.value.trim();
+            if (name === "") {
+                nameMessage.innerHTML = "Fill empty field";
+                setBorderColor(nameInput, false);
+            } else if (!/^[A-Za-z]+$/.test(name)) {
+                nameMessage.innerHTML = "Only alphabets are allowed";
+                setBorderColor(nameInput, false);
+            } else {
+                nameMessage.innerHTML = "";
+                setBorderColor(nameInput, true);
+            }
+        }
+
+        function validatePassword() {
+            const pass = passInput.value.trim();
+            if (pass === "") {
+                passMessage.innerHTML = "Fill empty field";
+                setBorderColor(passInput, false);
+            } else if (pass.length < 13) {
+                passMessage.innerHTML = "Must be at least 13 characters";
+                setBorderColor(passInput, false);
+            } else {
+                passMessage.innerHTML = "";
+                setBorderColor(passInput, true);
+            }
+        }
+
+        function validateRetypePassword() {
+            const pass = passInput.value.trim();
+            const retypePass = retypePassInput.value.trim();
+            if (retypePass === "") {
+                retypePassMessage.innerHTML = "Fill empty field";
+                setBorderColor(retypePassInput, false);
+            } else if (retypePass !== pass) {
+                retypePassMessage.innerHTML = "Passwords must match";
+                setBorderColor(retypePassInput, false);
+            } else {
+                retypePassMessage.innerHTML = "";
+                setBorderColor(retypePassInput, true);
+            }
+        }
+
+        function validateEmail() {
+            const email = emailInput.value.trim();
+            if (email === "") {
+                emailMessage.innerHTML = "Fill empty field";
+                setBorderColor(emailInput, false);
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                emailMessage.innerHTML = "Enter a valid email";
+                setBorderColor(emailInput, false);
+            } else {
+                emailMessage.innerHTML = "";
+                setBorderColor(emailInput, true);
+            }
+        }
+
+        function showForm(type) {
+            document.getElementById('teacherFields').style.display = type === 'teacher' ? 'block' : 'none';
+        }
+
+        const nameInput = document.getElementById("name");
+        const passInput = document.getElementById("password");
+        const retypePassInput = document.getElementById("Rpassword");
+        const emailInput = document.getElementById("email");
+
+        const nameMessage = document.getElementById("message");
+        const passMessage = document.getElementById("Pmessage");
+        const retypePassMessage = document.getElementById("Rmessage");
+        const emailMessage = document.getElementById("Emessage");
+
+        nameInput.addEventListener("focusout", validateName);
+        passInput.addEventListener("focusout", validatePassword);
+        retypePassInput.addEventListener("focusout", validateRetypePassword);
+        emailInput.addEventListener("focusout", validateEmail);
+    </script>
+</body>
+</html>

@@ -1,37 +1,43 @@
 /* Global Styles */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Gill Sans', Arial, Helvetica, sans-serif;
-    background: #F8FAFC;
-    overscroll-behavior: none;
-  }
+
+html, body {
+  height: 100%; 
+  overscroll-behavior: none;
   
-  /* Header */
-  .header {
-    background: #F8FAFC;
-    height: 80px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    box-shadow: 0px 0px 2px 2px #bbb;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5%;
-    z-index: 1000;
-  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+.main-content {
+  flex: 1; /* Pushes the footer down */
+}
+
+
+
+.footer {
+  background: rgb(69, 67, 67);
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  color: white;
+}
   
-  /* Footer */
   .footer {
-    position: relative;
-    background: rgb(69, 67, 67);
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    color: white;
-  }
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        font-size: 14px;
+        padding: 15px;
+    }
+}
+
   
 ::-webkit-scrollbar{
   width: 12px;

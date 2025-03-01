@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduConnect - Learn HTML, CSS, JavaScript and more with interactive tutorials and examples.">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Web Development, Tutorials">
+
     <title>EduConnect</title>
     <base href="/">  </base> 
     <link rel="icon" href="EduC1.png">
@@ -12,11 +15,14 @@
     <link rel="stylesheet" href="html-container.css"> 
     <link rel="stylesheet" href="HTML/html-page.css">
     <link rel="stylesheet" href="Admin/dashboard.css">
+    <link rel="stylesheet" href="Exercises/Quizzez/quiz.css">
+    <link rel="stylesheet" href="Exercises/Exercise/execrise.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
    
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" onclick="event.preventDefault(); loadPage('index.html','content')"> <img src="EduC1.png" alt="EduConnect Logo" class="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -32,72 +38,92 @@
                         <li>
                           <a href="#" onclick="event.preventDefault();loadPage('HTML/home.html','content')">HTML</a>
                           <ul class="submenu-videos">
-                            <li><a href="#" >HTML Videos</a></li>
+                            <li><a href="#" >Learn HTML</a></li>
+                            <li><a href="#" >Videos</a></li>
+                            <li><a href="#" >References</a></li>
                           </ul>
                         </li>
                         <li>
                           <a href="#">CSS</a>
                           <ul class="submenu-videos">
-                            <li><a href="#">CSS Videos</a></li>
+                            <li><a href="#">Learn CSS</a></li>
+                            <li><a href="videoTutorials/HTML-Videos.html" onclick="event.preventDefault(); loadPage('videoTutorials/HTML-Videos.html','content')">Videos</a></li>
+                            <li><a href="#">References</a></li>
                           </ul>
                         </li>
                         <li>
                           <a href="#">JavaScript</a>
                           <ul class="submenu-videos">
-                            <li><a href="#">JavaScript Videos</a></li>
+                            <li><a href="#">Learn JS</a></li>
+                            <li><a href="#">Videos</a></li>
+                            <li><a href="#">References</a></li>
                           </ul>
                         </li>
                       </ul>
                     </li>
-                    <li><a href="#">Contact</a></li>
+                    <li>
+                      <a href="#" onclick="event.preventDefault(); loadPage('contact.html','content')">Exercises</a>
+                      <ol id="quiz-exercise">
+                             <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/quiz-home.html','content')">Quizzez</a></li>
+                             <li><a href="#"  onclick="event.preventDefault(); loadPage('Exercises/Exercise/Exercise-home.html','content')">Exercise</a></li>
+                      </ol>
+                    </li>
                     <li><a href="#" onclick="event.preventDefault(); loadPage('Admin/dashboard.html','content')">Admin</a></li>
+                    <li><a href="Q&AForum/qahome.html">Q&A Forum</a></li>
+                    <li id="login-signup">
+                        <a href="#" onclick="return false;">Login/Signup</a>
+                        <ol class="login-dropdown">
+                          <li onclick="event.preventDefault(); loadPage('signup.html','content')" id="signup-btn">Sign Up</li>
+                          <li onclick="event.preventDefault(); loadPage('login.html','content')" id="login-btn">Login</li>
+                        </ol>
+                      </li>
                   </ul>
-                  
             </div>
         </div>
     </nav>
+    <div id="content">
+
+         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     
-    <div id="content" class="container mt-5 pt-5">
-        <div class="slider-container">
-            <h2>Trending Courses</h2>
-            <div class="slider">
-                <div class="card">
-                    <h1>Muhammad Mubashir</h1>
-                    <p>Slider Content</p>
-                </div>
-                <div class="card">
-                    <h1>Muhammad Mubashir</h1>
-                    <p>Slider Content</p>
-                </div>
-                <div class="card">
-                    <h1>Muhammad Mubashir</h1>
-                    <p>Slider Content</p>
-                </div>
-                <div class="card">
-                    <h1>Muhammad Mubashir</h1>
-                    <p>Slider Content</p>
-                </div>
-                <div class="card">
-                    <h1>Muhammad Mubashir</h1>
-                    <p>Slider Content</p>
-                    <p>Slider Content</p>
-                    <p>Slider Content</p>
-                    <p>Slider Content</p>
-                </div>
-                <div class="card">
-                    <h1>Muhammad Mubashir</h1>
-                    <p>Slider Content</p>
-                </div>
-                </div>
-            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="next" onclick="moveSlide(1)">&#10095;</button>
-        </div>
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></button>
+              <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2"></button>
+              <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3"></button>
+              <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4"></button>
+            </div>
+        
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="images/Leonardo_Phoenix_10_HTML_The_Foundation_of_the_Web_Dimension_3.jpg" class="d-block w-100" alt="HTML Image">
+              </div>
+              <div class="carousel-item">
+                <img src="images/Leonardo_Phoenix_10_2_CSS_Styling_the_Web_Dimensions_1080x108_2.jpg" class="d-block w-100" alt="Image CSS">
+              </div>
+              <div class="carousel-item">
+                <img src="images/Leonardo_Phoenix_10_3_JavaScript_The_Brain_of_the_Web_Dimensi_3.jpg" class="d-block w-100" alt="Image JS">
+              </div>
+              <div class="carousel-item">
+                <img src="images/Leonardo_Phoenix_10_4_React_The_Future_of_UI_Development_Dim_3.jpg" class="d-block w-100" alt="Image REACT">
+              </div>
+              <div class="carousel-item">
+                <img src="images/Leonardo_Phoenix_10_Python_Powering_AI_and_Automation_Dimens_2.jpg" class="d-block w-100" alt="Image PY">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>  
 
         <div class="html-container">
             <div class="text">
                 <p class="title">HTML</p>
                 <p class="description">HTML is web Development Language</p>
-                <button class="btn2" onclick="event.preventDefault();loadPage('HTML/home.html','content')">Learn HTML</button> <br>
+                <button class="btn2" onclick="event.preventDefault(); loadPage('HTML/home.html','content')">Learn HTML</button> <br>
                 <button class="btn1">HTML References</button><br>
                 <button class="btn3">Video Tutorial</button>
             </div>
@@ -120,14 +146,26 @@
                 <button id="run-btn">Run</button>
             </div>
         </div>
-    </div>
+</div>
 
 <footer class="footer mt-5 text-center p-3">
         <p> &copy EduConnect. All rights Reserved.</p>
-    </div>
+</footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="MainSlider.js"></script>
     <script src="pageLoader.js"></script> 
     <script src="refreshPage.js"></script>     
+    <script>
+ (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized")
+ {window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};
+ window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q")
+ {return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function()
+ {const script=document.createElement("script");
+ script.src="https://www.chatbase.co/embed.min.js";
+ script.id="kJ3rde7Va4PcRz_DKryo-";script.domain="www.chatbase.co";document.body.appendChild(script)};
+ if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
 </body>
 </html> 

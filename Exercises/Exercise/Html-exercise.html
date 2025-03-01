@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        textarea { width: 80%; height: 100px; margin-top: 20px; }
+        .output { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Coding Exercise</h1>
+    <p>Write a function that returns "Hello, World!" and run it.</p>
+    <textarea id="code">function greet() {
+    return "Hello, World!";
+}
+console.log(greet());</textarea>
+    <br>
+    <button onclick="runCode()">Run</button>
+    <pre class="output" id="output"></pre>
+    
+    <script>
+        function runCode() {
+            let code = document.getElementById("code").value;
+            try {
+                let result = eval(code);
+                document.getElementById("output").innerText = result;
+            } catch (error) {
+                document.getElementById("output").innerText = "Error: " + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

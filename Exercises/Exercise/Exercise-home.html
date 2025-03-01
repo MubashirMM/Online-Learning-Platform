@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCISE-EduConnect</title>
+    <base href="/">
+    <link rel="stylesheet" href="exercise.css">
+</head>
+<body>
+    <!-- Menu Toggle Button (Visible on Small Screens) -->
+    <button id="menu-toggle">Menu</button>
+
+    <nav class="exercise-menu">
+        <ol>
+            <li><h4>EduConnect Quizzes</h4></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/Exercise-home.html', 'content'); setActive(this);">Exercise Home</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/html-quiz.html', 'quiz-content'); setActive(this);">HTML Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html', 'quiz-content'); setActive(this);">CSS Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/html-quiz.html', 'quiz-content'); setActive(this);">JS Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/html-quiz.html', 'quiz-content'); setActive(this);">JAVA Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/html-quiz.html', 'quiz-content'); setActive(this);">Python Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html', 'quiz-content'); setActive(this);">C++ Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html', 'quiz-content'); setActive(this);">C++ Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html', 'quiz-content'); setActive(this);">C++ Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html', 'quiz-content'); setActive(this);">C++ Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html', 'quiz-content'); setActive(this);">C++ Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html', 'quiz-content'); setActive(this);">C++ Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html', 'quiz-content'); setActive(this);">C++ Exercise</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html', 'quiz-content'); setActive(this);">C++ Exercise</a></li>
+        </ol>
+    </nav>
+
+    <div id="exercise-content"> 
+        <h1>EduConnect Exercises</h1>
+        <hr>
+        <p>Test You Skills With EduConnect Execises</p>
+        <hr><br>
+        <h2>The Exercise</h2>
+        <p>We have gathered a variety of exercises (with answers) for each tutorial.
+        <br><br>Try to solve an exercise by editing some code. Get a "hint" if you're stuck,
+         or show the answer to see what you've done wrong.</p>
+        <div class="exercise-cards">
+        <div class="html-card">
+            <h2>HTML</h2>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Exercise/html-quiz.html','quiz-content')">Start Exercise</button>
+        </div>
+        <div class="css-card">
+            <h2>CSS</h2>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html','quiz-content')">Start Exercise</button>
+        </div>
+        <div class="js-card">
+            <h2>JavaScript</h2>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Exercise/html-quiz.html','quiz-content')">Start Exercise</button>
+        </div>
+        <div class="py-card">
+            <h2>Python</h2>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html','quiz-content')">Start Exercise</button>
+        </div>
+        <div class="Java-card">
+            <h2>Java</h2>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html','quiz-content')">Start Exercise</button>
+        </div>
+        <div class="cpp-card">
+            <h2>C++</h2>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Exercise/css-quiz.html','quiz-content')">Start Exercise</button>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function loadPage(pageLink, targetElementId) {
+    fetch(pageLink)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error loading page: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = data;
+
+            // Look for #quiz-content instead of #content
+            const newContent = tempDiv.querySelector("#content");
+            if (newContent) {
+                document.getElementById(targetElementId).innerHTML = newContent.innerHTML;
+            } else {
+                document.getElementById(targetElementId).innerHTML = data; // Fallback
+            }
+
+            // Update URL in history
+            window.history.pushState({ path: pageLink }, "", pageLink);
+        })
+        .catch(error => {
+            document.getElementById(targetElementId).innerHTML = "<p>Error loading content.</p>";
+            console.error("Error:", error);
+        });
+}
+
+    </script>
+    <script>
+        function setActive(clickedElement) {
+            // Remove 'active' class from all menu items
+            document.querySelectorAll('.exercise-menu ol li a').forEach(item => {
+                item.classList.remove('active');
+            });
+    
+            clickedElement.classList.add('active');
+        }
+    </script>
+    <script src="../refreshPage.js"></script>
+    <script src=""></script>
+</body>
+</html>

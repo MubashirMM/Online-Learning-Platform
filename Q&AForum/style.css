@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.forum-heading {
+    background-color: #007bff; /* Blue background for the heading */
+    color: white; /* White text for contrast */
+}
+
+.question-card {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.answer-card {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: none;
+}
+
+.timestamp {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 576px) {
+    .forum-heading h1 {
+        font-size: 1.5rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group-append {
+        margin-top: 0.5rem;
+    }
+}

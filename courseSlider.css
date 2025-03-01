@@ -1,60 +1,22 @@
-
-/* Slider Container */
-.slider-container {
-    /* margin-top: 80px; */
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    border-radius: 10px;
-    height: 500px;
-    max-height: 500px;
-    background: #d4e8fc;
-  }
-  
-  .slider-container h2 {
-    padding-left: 10px;
-  }
-  
-  .slider {
-    margin-top: 2px;
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    gap: 20px;
-    padding: 50px;
-  } 
-  
-  /* Slider Cards */
-  .card {
-    flex: 0 0 calc(100% / 3);
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-
-  
-  /* Mobile Responsive */
-  @media (max-width: 768px) {
-    .card {
-        flex: 0 0 100%;
-    }
-  }
-  .prev, .next {
-    font-size: 24px; /* Increases the arrow size */
-    width: 50px; /* Adjust width */
-    height: 50px; /* Adjust height */
-    /* display: flex; */
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(226, 213, 213); /* Optional: Background color */
-    color: white; /* Optional: Text color */
-    border: none;
-    border-radius: 5px; /* Optional: Square corners */
-    cursor: pointer;
+.carousel-inner {
+  height: 100vh; /* Keeps the carousel full height */
 }
 
-.prev:hover, .next:hover {
-    background-color: rgb(251, 234, 234); /* Darker color on hover */
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire container without stretching */
 }
- 
+
+/* For smaller screens, adjust height dynamically */
+@media (max-width: 768px) {
+  .carousel-inner {
+    height: 50vh; /* Reduce height on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-inner {
+    height: 40vh; /* Further reduce for mobile screens */
+  }
+}

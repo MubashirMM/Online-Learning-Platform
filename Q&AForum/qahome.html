@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Forum-EduConnect</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Heading with Background -->
+        <div class="forum-heading p-3 mb-4 rounded">
+            <h1 class="text-center">Q&A Forum</h1>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="input-group mb-4">
+            <input type="text" id="searchBar" class="form-control" placeholder="Search questions..." onkeyup="searchQuestions()">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
+            </div>
+        </div>
+
+        <!-- Ask Question Button -->
+        <button id="askQuestionBtn" class="btn btn-primary mb-3">Ask a Question</button>
+
+        <!-- Question Form -->
+        <div id="questionForm" class="mb-4" style="display: none;">
+            <textarea id="questionInput" class="form-control mb-2" placeholder="Enter your question with description..."></textarea>
+            <button id="submitQuestionBtn" class="btn btn-success">Submit Question</button>
+        </div>
+
+        <!-- Questions Container -->
+        <div id="questionsContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadQuestions();
+        });
+
+        document.getElementById('askQuestionBtn').addEventListener('click', function () {
+            document.getElementById('questionForm').style.display = 'block';
+        });
+
+        document.getElementById('submitQuestionBtn').addEventListener('click', function () {
+            const questionText = document.getElementById('questionInput').value;
+            if (questionText.trim() === '') {
+                alert('Please enter a question.');
+                return;
+            }
+
+            const timestamp = new Date().toLocaleString();
+            const questionObj = { question: questionText, timestamp: timestamp, answers: [] };
+            let questions = JSON.parse(localStorage.getItem('questions')) || [];
+            questions.push(questionObj);
+            localStorage.setItem('questions', JSON.stringify(questions));
+            document.getElementById('questionInput').value = '';
+            document.getElementById('questionForm').style.display = 'none';
+            loadQuestions();
+        });
+
+        function loadQuestions() {
+            const questionsContainer = document.getElementById('questionsContainer');
+            questionsContainer.innerHTML = '';
+            let questions = JSON.parse(localStorage.getItem('questions')) || [];
+            
+            questions.forEach((questionObj, index) => {
+                const questionCard = document.createElement('div');
+                questionCard.className = 'question-card';
+                questionCard.innerHTML = `
+                    <div>
+                        <strong>Q:</strong> ${questionObj.question}
+                        <span class="timestamp">${questionObj.timestamp}</span>
+                    </div>
+                    <textarea class="form-control mt-2 answer-input" placeholder="Enter your answer"></textarea>
+                    <button class="btn btn-secondary mt-2 submit-answer-btn">Submit Answer</button>
+                    <div class="answers-container"></div>
+                `;
+                
+                questionsContainer.appendChild(questionCard);
+
+                const submitAnswerBtn = questionCard.querySelector('.submit-answer-btn');
+                const answerInput = questionCard.querySelector('.answer-input');
+                const answersContainer = questionCard.querySelector('.answers-container');
+                
+                questionObj.answers.forEach(answer => {
+                    const answerCard = document.createElement('div');
+                    answerCard.className = 'answer-card';
+                    answerCard.innerHTML = `<strong>A:</strong> ${answer} <span class="timestamp">${new Date().toLocaleString()}</span>`;
+                    answersContainer.appendChild(answerCard);
+                    answerCard.style.display = 'block';
+                });
+
+                submitAnswerBtn.addEventListener('click', function () {
+                    const answerText = answerInput.value;
+                    if (answerText.trim() === '') {
+                        alert('Please enter an answer.');
+                        return;
+                    }
+                    
+                    questionObj.answers.push(answerText);
+                    localStorage.setItem('questions', JSON.stringify(questions));
+                    loadQuestions();
+                });
+            });
+        }
+
+        function searchQuestions() {
+            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            const questions = document.querySelectorAll('.question-card');
+            
+            questions.forEach(question => {
+                const questionText = question.innerText.toLowerCase();
+                if (questionText.includes(searchTerm)) {
+                    question.style.display = 'block';
+                } else {
+                    question.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

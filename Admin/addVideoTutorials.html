@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Publisher</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .video-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px;
+            gap: 10px;
+        }
+        .video-container video {
+            width: 200px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .video-container::-webkit-scrollbar {
+            height: 5px;
+        }
+        .video-container::-webkit-scrollbar-thumb {
+            background: gray;
+            border-radius: 5px;
+        }
+        .playing {
+            border: 3px solid red;
+        }
+        .video-item {
+            text-align: center;
+        }
+        .chapter-title {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Publish Your Course</h1>
+        <form id="course-form">
+            <div class="mb-3">
+                <label class="form-label">Course Title</label>
+                <input type="text" class="form-control" id="course-title" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Course Description (One Line)</label>
+                <input type="text" class="form-control" id="course-description" required>
+            </div>
+            <h4>Add Videos</h4>
+            <div id="video-inputs">
+                <div class="mb-3 d-flex">
+                    <input type="file" accept="video/*" class="form-control me-2 video-file" required>
+                    <input type="text" class="form-control video-chapter" placeholder="Chapter Name" required>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary mb-3" onclick="addVideoInput()">+ Add Another Video</button>
+            <br>
+            <button type="submit" class="btn btn-primary">Publish Course</button>
+        </form>
+    </div>
+
+    <div class="container mt-5" id="course-display" style="display: none;">
+        <h1 id="display-course-title"></h1>
+        <p id="display-course-description"></p>
+        
+        <div class="container mt-4">
+            <h2 id="video-title">Current Video</h2>
+            <video id="main-video" class="w-100" controls>
+                <source id="main-video-source" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="container mt-4">
+            <h4>CHAPTERS:</h4>
+            <div class="video-container d-flex" id="video-list"></div>
+        </div>
+    </div>
+
+    <script>
+        function addVideoInput() {
+            const videoInputs = document.getElementById('video-inputs');
+            const newInput = document.createElement('div');
+            newInput.classList.add('mb-3', 'd-flex');
+            newInput.innerHTML = `
+                <input type="file" accept="video/*" class="form-control me-2 video-file" required>
+                <input type="text" class="form-control video-chapter" placeholder="Chapter Name" required>
+            `;
+            videoInputs.appendChild(newInput);
+        }
+
+        document.getElementById('course-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('course-title').value.trim();
+            const description = document.getElementById('course-description').value.trim();
+            const videoFiles = document.querySelectorAll('.video-file');
+            const videoChapters = document.querySelectorAll('.video-chapter');
+
+            if (videoFiles.length === 0) {
+                alert('Please add at least one video.');
+                return;
+            }
+
+            document.getElementById('display-course-title').textContent = title;
+            document.getElementById('display-course-description').textContent = description;
+
+            const videoList = document.getElementById('video-list');
+            videoList.innerHTML = '';
+
+            const mainVideo = document.getElementById('main-video-source');
+            mainVideo.src = URL.createObjectURL(videoFiles[0].files[0]);
+            document.getElementById('main-video').load();
+
+            videoFiles.forEach((fileInput, index) => {
+                const file = fileInput.files[0];
+                const chapterName = videoChapters[index].value.trim();
+                const videoURL = URL.createObjectURL(file);
+
+                const videoItem = document.createElement('div');
+                videoItem.classList.add('video-item');
+
+                const videoElement = document.createElement('video');
+                videoElement.src = videoURL;
+                videoElement.setAttribute('aria-label', chapterName);
+                videoElement.onclick = () => changeVideo(videoElement, videoURL);
+
+                const chapterTitle = document.createElement('div');
+                chapterTitle.classList.add('chapter-title');
+                chapterTitle.textContent = chapterName;
+
+                videoItem.appendChild(videoElement);
+                videoItem.appendChild(chapterTitle);
+                videoList.appendChild(videoItem);
+            });
+
+            document.getElementById('course-display').style.display = 'block';
+        });
+
+        function changeVideo(element, src) {
+            document.getElementById('main-video-source').src = src;
+            document.getElementById('main-video').load();
+
+            const videos = document.querySelectorAll('.video-container video');
+            videos.forEach(video => video.classList.remove('playing'));
+            element.classList.add('playing');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

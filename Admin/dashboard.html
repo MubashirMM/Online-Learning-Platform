@@ -6,33 +6,64 @@
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    
 </head>
 <body>
     <div class="header">
         <h1>Admin Dashboard</h1>
     </div>
+
     <button id="menu-toggle">Menu</button>
     <nav class="dash-menu">
         <ol>
-            <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/home.html', 'content'); setActive(this);">DashBoard</a></li>
-            <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/introduction.html', 'html-content'); setActive(this);">Courses</a></li>
-            <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/editors.html', 'html-content'); setActive(this);">Quries</a></li>
-            <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/editors.html', 'html-content'); setActive(this);">Quizez</a></li>
-            <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/editors.html', 'html-content'); setActive(this);">Exercise</a></li>
-            <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/editors.html', 'html-content'); setActive(this);">Teachers</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Admin/dashboard.html', 'content'); setActive(this);">DashBoard</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Admin/courses.html', 'admin-content'); setActive(this);">Courses</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Amdin/queries.html', 'admin-content'); setActive(this);">Queries</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Amdin/quizzes.html', 'admin-content'); setActive(this);">Quizzes</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Admin/exercise.html', 'admin-content'); setActive(this);">Exercises</a></li>
+            <li><a href="addVideoTutorials.html" setActive(this);">Teachers</a></li>
         </ol>
     </nav>
 
-<div class="courses">
-    
-</div>
-<div class="Quizez"></div>
-<div class="Exercise"></div>
-<div class="Quries"></div>
-<div class="Teacher"></div>
+    <div id="admin-content">
+    <div class="card-container mt-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card dashboard-card text-center p-3">
+                    <div class="icon-container bg-quizzes mx-auto">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h4 class="mt-3">Quizzes</h4>
+                    <p class="fw-bold">12 Available</p>
+                    <button class="btn btn-primary">Manage</button>
+                </div>
+            </div>
 
+            <div class="col-md-4">
+                <div class="card dashboard-card text-center p-3">
+                    <div class="icon-container bg-exercises mx-auto">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h4 class="mt-3">Exercises</h4>
+                    <p class="fw-bold">20 Available</p>
+                    <button class="btn btn-success">Manage</button>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card dashboard-card text-center p-3">
+                    <div class="icon-container bg-courses mx-auto">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4 class="mt-3">Courses</h4>
+                    <p class="fw-bold">8 Available</p>
+                    <button class="btn btn-warning">Manage</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
-
+</html>

@@ -1,0 +1,231 @@
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styling */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Navigation Menu */
+  nav.exercise-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background: rgb(239, 238, 238);
+    overflow-y: auto;
+    padding: 10px;
+    z-index: 9999;
+  }
+  
+  /* Hide Menu on Small Screens by Default */
+  @media (max-width: 768px) {
+    nav.exercise-menu {
+        transform: translateX(-100%);
+    }
+  
+    /* Show menu when hovering over toggle button or menu */
+    #menu-toggle:hover + nav.exercise-menu,
+    nav.exercise-menu:hover {
+        transform: translateX(0);
+    }
+  }
+  
+  /* Menu List Styling */
+  nav.exercise-menu ol {
+    list-style: none;
+  }
+  
+  nav.exercise-menu ol li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  nav.exercise-menu ol li a {
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+    display: block;
+  }
+  
+  nav.exercise-menu ol li a:hover {
+    color: #007BFF;
+  }
+  
+  
+  /* Content Area */
+  #exercise-content {
+    margin-top: 100px;
+    margin-left:250px;
+    padding: 20px;
+    flex-grow: 1;
+    transition: margin-left 0.3s ease-in-out;
+  }
+  
+  #exercise-content h1 {
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    #exercise-content {
+        margin-left: 0;
+    }
+    nav.exercise-menu {
+        width: 200px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #exercise-content {
+        padding: 10px;
+    }
+  
+    nav.exercise-menu ol li a {
+        font-size: 12px;
+    }
+  }
+  
+  /* Toggle Button */
+  #menu-toggle {
+    position: fixed;
+    top: 60px;
+    left: 2px;
+    z-index: 1000;
+    padding: 5px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Hide button on larger screens */
+  @media (min-width: 769px) {
+    #menu-toggle {
+        display: none;
+    }
+  }
+  
+  ::-webkit-scrollbar{
+    width: 12px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background: rgb(204, 207, 204);
+  }
+  
+/* ........................................ccards */
+/* ........................................cards */
+.exercise-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    background-color: black;
+    justify-content: center;
+    padding: 50px;
+    width: 90%;
+}
+
+/* Individual Card Styling */
+.html-card, .css-card, .js-card, .py-card, .Java-card ,.cpp-card {
+    width: calc(45% - 20px); /* Two cards per row with gap */
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Unique Card Colors */
+.html-card { background-color: #b3c9d8; } /* HTML - Orange */
+.css-card { background-color: #90b2c9; } /* CSS - Blue */
+.js-card { background-color: #d8d3af; } /* JavaScript - Yellow */
+.py-card { background-color: #c0d6e8; } /* Python - Dark Blue */
+.Java-card { background-color: #ccf5d0; } /* Java - Orange-Yellow */
+.cpp-card { background-color: #8fa0ad; } /* C++ - Dark Blue */
+
+/* Hover Effect */
+/* .html-card:hover, .css-card:hover, .js-card:hover, .py-card:hover, .Java-card:hover {
+    transform: translateY(-8px);
+} */
+
+/* Center Text Inside Cards */
+.exercise-cards h2 {
+    margin-bottom: 10px;
+}
+
+/* Button Styling */
+.exercise-cards button {
+    padding: 8px 15px;
+    font-size: 17px;
+    font-weight: bold;
+    background: green;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40%;
+    margin: 40px;
+    height: 8vh;
+} 
+
+.exercise-cards button:hover {
+    background: white;
+    background: rgb(3, 154, 3);
+
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .html-card, .css-card, .js-card, .py-card, .Java-card, .cpp-card{
+        width: 100%; /* One card per row on small screens */
+    }
+}
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+  }
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.card {
+  flex: 1 1 300px; /* Minimum width of 300px */
+  max-width: 100%;
+}
+
+
+/* ........................................menu activation  */
+nav.exercise-menu ol li a.active {
+    background-color: green; /* Change to your desired background color */
+    color: white; /* Change to your desired text color */
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+nav.exercise-menu ol li a:hover:not(.active) {
+    background-color: green; /* Change to your desired hover background color */
+    color: white; /* Change to your desired hover text color */
+    font-weight: bold;
+    border-radius: 5px;
+}

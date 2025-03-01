@@ -1,102 +1,172 @@
 /* Main Navigation */
 .navbar {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-    background: #F8FAFC;
-    box-shadow: 0px 0px 2px 2px #bbb;
-    padding: 10px 20px;
-    position: relative;
-  }
-  /* Style for the Navbar Logo */
-.logo {
-    height: 30px;  /* Adjust height as needed */
-    width: auto;   /* Maintain aspect ratio */
-mix-blend-mode: multiply;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  background: #F8FAFC;
+  box-shadow: 0px 0px 2px 2px #bbb;
+  padding: 10px 20px;
+  position: relative;
 }
 
+/* Style for the Navbar Logo */
+.logo {
+  height: 30px;  /* Adjust height as needed */
+  width: auto;   /* Maintain aspect ratio */
+  mix-blend-mode: multiply;
+}
 
-/* Remove mix-blend-mode if it was applied somewhere */
-  
-  .navbar-menu {
-    display: flex;
-    list-style: none;
-    gap: 10px;
-    font-size: 1.2rem;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    padding-left: 100px;
-    text-transform: uppercase;
-    font-weight: bold;
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  padding-left: 100px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
 
-  }
-  
-  .navbar-menu li {
-    position: relative;
-  }
-  
-  .navbar-menu li a {
-    text-decoration: none;
-    color: #1F2937;
-    padding: 10px;
-    display: block;
-  }
-  
-  .navbar-menu li a:hover {
-    color: #FACC15;
-  }
-  
-  /* Submenu (First Level) */
-  .submenu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    list-style: none;
-    padding: 10px 0;
-    min-width: 150px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .navbar-menu li:hover .submenu {
-    display: block;
-  }
-  
-  /* Nested Submenu (Second Level) */
-  .submenu .submenu-videos {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 100%;
-    background: white;
-    list-style: none;
-    padding: 10px 0;
-    min-width: 150px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .submenu li:hover .submenu-videos {
-    display: block;
-  }
+/* Main Menu Items */
+.navbar-menu li {
+  position: relative;
+}
 
-  @media (max-width: 768px) {
-    .navbar-menu {
+/* Main Menu Links */
+.navbar-menu li a {
+  text-decoration: none;
+  color: #1F2937;
+  padding: 10px;
+  display: block;
+}
+
+.navbar-menu li a:hover {
+  color: #FACC15;
+}
+
+/* Submenu (First Level) */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  list-style: none;
+  padding: 10px 0;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-menu li:hover .submenu,
+.navbar-menu li:focus-within .submenu {
+  display: block;
+}
+
+/* Nested Submenu (Second Level) */
+.submenu .submenu-videos {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: white;
+  list-style: none;
+  padding: 10px 0;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.submenu li:hover .submenu-videos,
+.submenu li:focus-within .submenu-videos {
+  display: block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
       flex-direction: column;
-    }
-  
-    .submenu {
+      align-items: flex-start;
+  }
+
+  .navbar-menu {
+      flex-direction: column;
+      width: auto; /* Allows the menu to adjust width */
+      padding-left: 0;
+  }
+
+  .navbar-menu li {
+      width: 100%;
+  }
+
+  /* Make sure submenus are accessible */
+  .submenu {
+      position: static;
+      display: none;
+      width: 70%;
+  }
+
+  .navbar-menu li:focus-within .submenu,
+  .navbar-menu li:hover .submenu {
+      display: block;
+  }
+
+  /* Keep nested submenu working */
+  .submenu .submenu-videos {
       position: static;
       display: none;
       width: 100%;
-    }
-  
-    .navbar-menu li:focus-within .submenu,
-    .navbar-menu li:hover .submenu {
-      display: block;
-    }
   }
-  
-  
+
+  .submenu li:focus-within .submenu-videos,
+  .submenu li:hover .submenu-videos {
+      display: block;
+  }
+}
+
+/* Login Dropdown */
+.login-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  list-style: none;
+  padding: 10px 0;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#login-signup:hover .login-dropdown,
+#login-signup:focus-within .login-dropdown {
+  display: block;
+}
+
+.login-dropdown li {
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.login-dropdown li:hover {
+  background-color: #f0f0f0;
+}
+
+/* Quiz & Exercise Dropdown */
+#quiz-exercise {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  list-style: none;
+  padding: 10px 0;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-menu li:hover #quiz-exercise,
+.navbar-menu li:focus-within #quiz-exercise {
+  display: block;
+}

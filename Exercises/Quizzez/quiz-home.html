@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ-EduConnect</title>
+    <base href="/">
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+    <!-- Menu Toggle Button (Visible on Small Screens) -->
+    <button id="menu-toggle">Menu</button>
+
+    <nav class="quiz-menu">
+        <ol>
+            <li><h4>EduConnect Quizzes</h4></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/quiz-home.html', 'content'); setActive(this);">Quiz Home</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/html-quiz.html', 'quiz-content'); setActive(this);">HTML Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html', 'quiz-content'); setActive(this);">CSS Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/html-quiz.html', 'quiz-content'); setActive(this);">JS Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/html-quiz.html', 'quiz-content'); setActive(this);">JAVA Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/html-quiz.html', 'quiz-content'); setActive(this);">Python Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html', 'quiz-content'); setActive(this);">C++ Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html', 'quiz-content'); setActive(this);">C++ Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html', 'quiz-content'); setActive(this);">C++ Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html', 'quiz-content'); setActive(this);">C++ Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html', 'quiz-content'); setActive(this);">C++ Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html', 'quiz-content'); setActive(this);">C++ Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html', 'quiz-content'); setActive(this);">C++ Quiz</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html', 'quiz-content'); setActive(this);">C++ Quiz</a></li>
+        </ol>
+    </nav>
+
+    <div id="quiz-content"> 
+        <h1>EduConnect Quizzes</h1>
+        <hr>
+        <p>Test You Skills With EduConnect Quizzes</p>
+        <hr><br>
+        <h2>The Quiz</h2>
+        <p id="quiz-description">Each quiz contains multiple questions, you get 1 point for each correct answer,
+             at the end of each quiz you get your total score.
+         <br>When you finish the quiz, you can go through each question with the correct answer.</p>
+        <div class="quiz-cards">
+        <div class="html-card">
+            <h2>HTML</h2>
+            <p>Question of the HTML covers a-z all concepts.</p>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Quizzez/html-quiz.html','quiz-content')">Start Quiz</button>
+        </div>
+        <div class="css-card">
+            <h2>CSS</h2>
+            <p>Question of the HTML covers a-z all concepts.</p>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html','quiz-content')">Start Quiz</button>
+        </div>
+        <div class="js-card">
+            <h2>JavaScript</h2>
+            <p>Question of the JS covers a-z all concepts.</p>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Quizzez/html-quiz.html','quiz-content')">Start Quiz</button>
+        </div>
+        <div class="py-card">
+            <h2>Python</h2>
+            <p>Question of the JS covers a-z all concepts.</p>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html','quiz-content')">Start Quiz</button>
+        </div>
+        <div class="Java-card">
+            <h2>Java</h2>
+            <p>Question of the JS covers a-z all concepts.</p>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html','quiz-content')">Start Quiz</button>
+        </div>
+        <div class="cpp-card">
+            <h2>C++</h2>
+            <p>Question of the JS covers a-z all concepts.</p>
+            <button onclick="event.preventDefault(); loadPage('Exercises/Quizzez/css-quiz.html','quiz-content')">Start Quiz</button>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function loadPage(pageLink, targetElementId) {
+    fetch(pageLink)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error loading page: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = data;
+
+            // Look for #quiz-content instead of #content
+            const newContent = tempDiv.querySelector("#content");
+            if (newContent) {
+                document.getElementById(targetElementId).innerHTML = newContent.innerHTML;
+            } else {
+                document.getElementById(targetElementId).innerHTML = data; // Fallback
+            }
+
+            // Update URL in history
+            window.history.pushState({ path: pageLink }, "", pageLink);
+        })
+        .catch(error => {
+            document.getElementById(targetElementId).innerHTML = "<p>Error loading content.</p>";
+            console.error("Error:", error);
+        });
+}
+
+    </script>
+    <script>
+        function setActive(clickedElement) {
+            // Remove 'active' class from all menu items
+            document.querySelectorAll('.quiz-menu ol li a').forEach(item => {
+                item.classList.remove('active');
+            });
+    
+            clickedElement.classList.add('active');
+        }
+    </script>
+    <script src="../refreshPage.js"></script>
+    <script src=""></script>
+</body>
+</html>
