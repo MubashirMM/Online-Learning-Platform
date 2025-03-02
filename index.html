@@ -11,17 +11,19 @@
     <link rel="icon" href="EduC1.png">
     <link rel="stylesheet" href="navBar.css"> 
     <link rel="stylesheet" href="courseSlider.css">
-    <link rel="stylesheet" href="heade-footer.css">
+    <link rel="stylesheet" href="header-footer.css">
     <link rel="stylesheet" href="html-container.css">
     <link rel="stylesheet" href="HTML/html-page.css">
     <link rel="stylesheet" href="Admin/dashboard.css">
     <link rel="stylesheet" href="Exercises/Quizzez/quiz.css">
-    <link rel="stylesheet" href="Exercises/Exercise/execrise.css">
-    
+    <link rel="stylesheet" href="Exercises/Exercise/execrise.css"> 
+    <link rel="stylesheet" href="References/HTML-References/HTML-references.css"> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-   
 </head>
 <body>
+<!-- .......................................................Nav Bar ..................................-->
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" onclick="event.preventDefault(); loadPage('index.html','content')"> <img src="EduC1.png" alt="EduConnect Logo" class="logo"></a>
@@ -31,45 +33,46 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-menu">
-                    <li><a href="#" onclick="event.preventDefault();loadPage('index.html','content')">Home</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); loadPage('index.html','content')">Home</a></li>
                     <li>
                       <a href="#" onclick="return false;">Tutorials</a>
                       <ul class="submenu">
                         <li>
                           <a href="#" onclick="event.preventDefault();loadPage('HTML/home.html','content')">HTML</a>
                           <ul class="submenu-videos">
-                            <li><a href="#" >Learn HTML</a></li>
-                            <li><a href="#" >Videos</a></li>
-                            <li><a href="#" >References</a></li>
+                            <li><a href="#" onclick="event.preventDefault();loadPage('HTML/home.html','content')">Learn HTML</a></li>
+                            <li><a href="videoTutorials/HTML-Videos.html" >Videos</a></li>
+                            <li><a href="#" onclick="event.preventDefault(); loadPage('References/HTML-References/HTML-By-Alphabet.html','content')" >References</a></li>
                           </ul>
                         </li>
                         <li>
                           <a href="#">CSS</a>
                           <ul class="submenu-videos">
                             <li><a href="#">Learn CSS</a></li>
-                            <li><a href="videoTutorials/HTML-Videos.html" onclick="event.preventDefault(); loadPage('videoTutorials/HTML-Videos.html','content')">Videos</a></li>
-                            <li><a href="#">References</a></li>
+                            <li><a href="videoTutorials/HTML-Videos.html">Videos</a></li>
+                            <li><a href="#" onclick="event.preventDefault(); loadPage('References/HTML-References/HTML-By-Alphabet.html','content')">References</a></li>
                           </ul>
                         </li>
-                        <li>
+                        <li> 
                           <a href="#">JavaScript</a>
                           <ul class="submenu-videos">
                             <li><a href="#">Learn JS</a></li>
-                            <li><a href="#">Videos</a></li>
-                            <li><a href="#">References</a></li>
+                            <li><a href="#" onclick="event.preventDefault(); loadPage('videoTutorials/HTML-Videos.html','content')">Videos</a></li>
+                            <li><a href="#"  onclick="event.preventDefault(); loadPage('References/HTML-References/HTML-By-Alphabet.html','content')">References</a></li>
                           </ul>
                         </li>
                       </ul>
                     </li>
                     <li>
-                      <a href="#" onclick="event.preventDefault(); loadPage('contact.html','content')">Exercises</a>
+                      <a href="#"  onclick="return false;">Exercises</a>
                       <ol id="quiz-exercise">
-                             <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/quiz-home.html','content')">Quizzez</a></li>
-                             <li><a href="#"  onclick="event.preventDefault(); loadPage('Exercises/Exercise/Exercise-home.html','content')">Exercise</a></li>
+                             <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Quizzez/quiz-home.html','content')">Quizzes</a></li>
+                             <li><a href="#" onclick="event.preventDefault(); loadPage('Exercises/Exercise/Exercise-home.html','content')">Exercise</a></li>
                       </ol>
                     </li>
                     <li><a href="#" onclick="event.preventDefault(); loadPage('Admin/dashboard.html','content')">Admin</a></li>
-                    <li><a href="Q&AForum/qahome.html">Q&A Forum</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); loadPage('Teacher/dashboard.html','content')">Teacher</a></li>
+                    <li><a href="#" onclick="event.preventDefault(); loadPage('Q&AForum/qahome.html','content')">Q&A Forum</a></li>
                     <li id="login-signup">
                         <a href="#" onclick="return false;">Login/Signup</a>
                         <ol class="login-dropdown">
@@ -81,8 +84,12 @@
             </div>
         </div>
     </nav>
+
+
+    <!-- ..................................................content divisions -->
     <div id="content">
 
+      <!--  ..............................................carousal imges ........................................ -->
          <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
     
             <!-- Indicators -->
@@ -93,7 +100,7 @@
               <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3"></button>
               <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4"></button>
             </div>
-        
+        <!-- ..................................................images  -->
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img src="images/Leonardo_Phoenix_10_HTML_The_Foundation_of_the_Web_Dimension_3.jpg" class="d-block w-100" alt="HTML Image">
@@ -119,10 +126,42 @@
             </button>
           </div>  
 
+          <!-- ..........................................................html section  -->
         <div class="html-container">
             <div class="text">
                 <p class="title">HTML</p>
                 <p class="description">HTML is web Development Language</p>
+                <button class="btn2" onclick="event.preventDefault(); loadPage('HTML/home.html','content')">Learn HTML</button> <br>
+                <button class="btn1" onclick="event.preventDefault(); loadPage('References/HTML-References/HTML-By-Alphabet.html','content')">HTML References</button><br>
+                <button class="btn3" onclick="event.preventDefault(); loadPage('videoTutorials/HTML-Videos.html','content')">Video Tutorial</button>
+            </div>
+            <div class="code-container">
+                <h2>HTML Example</h2>
+                <div class="code">
+                    <pre id="code">
+&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+    &lt;title&gt; HTML Example &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;This is a HTML Example &lt;/h1&gt;
+    &lt;h2&gt;This is a HTML Example &lt;/h2&gt;
+    &lt;h3&gt;This is a HTML Example &lt;/h3&gt;
+&lt;/body&gt;
+&lt;html&gt;
+                    </pre>
+                </div>
+                <button id="run-btn" onclick="Examples/E-html.html" _blank>Run</button>
+                <a href="Examples/E-html.html">RU </a>
+            </div>
+        </div>
+        
+
+        <!-- ..........................................css section  -->
+        <div class="css-container">
+            <div class="text">
+                <p class="title">CSS</p>
+                <p class="description">CSS stands for Cascading Style Sheet</p>
                 <button class="btn2" onclick="event.preventDefault(); loadPage('HTML/home.html','content')">Learn HTML</button> <br>
                 <button class="btn1">HTML References</button><br>
                 <button class="btn3">Video Tutorial</button>
@@ -146,11 +185,174 @@
                 <button id="run-btn">Run</button>
             </div>
         </div>
-</div>
-<!-- 
-<div class="footer mt-5 text-center p-3">
-        <p> &copy EduConnect. All rights Reserved.</p>
-</div> -->
+
+
+<!-- ........................................................js section...................... -->
+        <div class="js-container">
+            <div class="text">
+                <p class="title">JavaScript</p>
+                <p class="description">JavaScript is language for programming web pages</p>
+                <button class="btn2" onclick="event.preventDefault(); loadPage('HTML/home.html','content')">Learn HTML</button> <br>
+                <button class="btn1">HTML References</button><br>
+                <button class="btn3">Video Tutorial</button>
+            </div>
+            <div class="code-container">
+                <h2>HTML Example</h2>
+                <div class="code">
+                    <pre id="code">
+&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+    &lt;title&gt; HTML Example &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;This is a HTML Example &lt;/h1&gt;
+    &lt;h2&gt;This is a HTML Example &lt;/h2&gt;
+    &lt;h3&gt;This is a HTML Example &lt;/h3&gt;
+&lt;/body&gt;
+&lt;html&gt;
+                    </pre>
+                </div>
+                <button id="run-btn">Run</button>
+            </div>
+        </div>
+
+
+        <!-- .........................................java section ................................... -->
+        <div class="Java-container">
+            <div class="text">
+                <p class="title">Java</p>
+                <p class="description">Java popular programming language</p>
+                <button class="btn2" onclick="event.preventDefault(); loadPage('HTML/home.html','content')">Learn HTML</button> <br>
+                <button class="btn1">HTML References</button><br>
+                <button class="btn3">Video Tutorial</button>
+            </div>
+            <div class="code-container">
+                <h2>HTML Example</h2>
+                <div class="code">
+                    <pre id="code">
+&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+    &lt;title&gt; HTML Example &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;This is a HTML Example &lt;/h1&gt;
+    &lt;h2&gt;This is a HTML Example &lt;/h2&gt;
+    &lt;h3&gt;This is a HTML Example &lt;/h3&gt;
+&lt;/body&gt;
+&lt;html&gt;
+                    </pre>
+                </div>
+                <button id="run-btn">Run</button>
+            </div>
+        </div>
+
+
+
+
+        <!-- ...........................................cpp section  -->
+        <div class="cpp-container">
+            <div class="text">
+                <p class="title">C++</p>
+                <p class="description">C++ is a powerful programming language</p>
+                <button class="btn2" onclick="event.preventDefault(); loadPage('HTML/home.html','content')">Learn HTML</button> <br>
+                <button class="btn1">HTML References</button><br>
+                <button class="btn3">Video Tutorial</button>
+            </div>
+            <div class="code-container">
+                <h2>HTML Example</h2>
+                <div class="code">
+                    <pre id="code">
+&lt;!DOCTYPE html&gt;
+&lt;head&gt;
+    &lt;title&gt; HTML Example &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;This is a HTML Example &lt;/h1&gt;
+    &lt;h2&gt;This is a HTML Example &lt;/h2&gt;
+    &lt;h3&gt;This is a HTML Example &lt;/h3&gt;
+&lt;/body&gt;
+&lt;html&gt;
+                    </pre>
+                </div>
+                <button id="run-btn">Run</button>
+            </div>
+        </div>
+<!-- ................................................................................................. -->
+
+    <div class="faq-container">
+        <h2>FAQs</h2>
+        <details>
+            <summary>What is EduConnect?</summary>
+            <p>EduConnect is an online learning platform providing various courses and tutorials.</p>
+        </details>
+        <details>
+            <summary>How do I sign up?</summary>
+            <p>You can sign up by clicking on the Register button and filling in your details.</p>
+        </details>
+        <details>
+            <summary>Are the courses free?</summary>
+            <p>Some courses are free, while others require a subscription.</p>
+        </details>
+        <details>
+            <summary>Can I get a certificate?</summary>
+            <p>Yes, a certificate is provided upon course completion.</p>
+        </details>
+        <details>
+            <summary>How do I reset my password?</summary>
+            <p>You can reset your password by clicking on 'Forgot Password' on the login page.</p>
+        </details>
+        <details>
+            <summary>Is there a mobile app?</summary>
+            <p>Currently, we are developing a mobile version for better accessibility.</p>
+        </details>
+        <details>
+            <summary>How can I contact support?</summary>
+            <p>You can contact support through our Help Center or email us at support@educonnect.com.</p>
+        </details>
+        <details>
+            <summary>Can I download course materials?</summary>
+            <p>Yes, some courses allow you to download resources for offline use.</p>
+        </details>
+        <details>
+            <summary>Do you offer refunds?</summary>
+            <p>Refunds are available within the first 7 days of purchase.</p>
+        </details>
+        <details>
+            <summary>Can I teach on EduConnect?</summary>
+            <p>Yes, you can apply to be an instructor through our Instructor Portal.</p>
+        </details>
+    </div>
+
+
+    </div>
+
+<!-- ................................................................Footer........................... -->
+<footer class="footer">
+  <div class="footer-container">
+      <div class="footer-section">
+          <h4>About Us</h4>
+          <p>We provide top-notch services for your needs. Contact us anytime!</p>
+      </div>
+      <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">FAQ</a></li>
+          </ul>
+      </div>
+      <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Email: info@example.com</p>
+          <p>Phone: +123 456 789</p>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>© 2025 Your Website. All Rights Reserved.</p>
+  </div>
+</footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="MainSlider.js"></script>
@@ -167,5 +369,8 @@
  if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
 
+<script>
+    
+</script>
 </body>
 </html> 

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Teachers</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .container {
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Remove the header and sidebar from this file -->
+    <div class="card-container">
+        <div id="admin-content">
+            <div class="container">
+                <h2 class="text-center mb-4">Manage Teachers</h2>
+                
+                <!-- Create Teacher Form -->
+                <form id="teacherForm">
+                    <div class="mb-3">
+                        <label class="form-label">Teacher Name</label>
+                        <input type="text" class="form-control" id="teacherName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="teacherEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="teacherSubject" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Teacher</button>
+                </form>
+                
+                <hr>
+                
+                <!-- Teachers List -->
+                <h4 class="mt-4">Existing Teachers</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="teacherList">
+                        <!-- Teachers will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('teacherForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let name = document.getElementById('teacherName').value;
+            let email = document.getElementById('teacherEmail').value;
+            let subject = document.getElementById('teacherSubject').value;
+            let table = document.getElementById('teacherList');
+            let row = table.insertRow();
+            row.innerHTML = `<td>#</td><td>${name}</td><td>${email}</td><td>${subject}</td>
+                            <td><button class='btn btn-warning btn-sm'>Edit</button>
+                                <button class='btn btn-danger btn-sm'>Delete</button></td>`;
+            document.getElementById('teacherForm').reset();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

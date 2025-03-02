@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrated Code Editor</title>
+  <!-- Include CodeMirror CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    .editor-container {
+      display: flex;
+      flex: 1;
+      border: 1px solid #ccc;
+    }
+    .editor {
+      flex: 1;
+      height: 100%;
+      border-right: 1px solid #ccc;
+    }
+    .output-container {
+      flex: 1;
+      padding: 10px;
+      overflow: auto;
+      border-left: 1px solid #ccc;
+    }
+    .controls {
+      padding: 10px;
+      background-color: #f4f4f4;
+      border-bottom: 1px solid #ccc;
+    }
+    .controls button {
+      padding: 5px 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .controls button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Controls -->
+  <div class="controls">
+    <button id="runButton">Run</button>
+  </div>
+
+  <!-- Editor and Output Container -->
+  <div class="editor-container">
+    <!-- HTML Editor -->
+    <div class="editor" id="htmlEditor"></div>
+    <!-- CSS Editor -->
+    <div class="editor" id="cssEditor"></div>
+    <!-- JS Editor -->
+    <div class="editor" id="jsEditor"></div>
+    <!-- Output Box -->
+    <div class="output-container" id="outputBox"></div>
+  </div>
+
+  <!-- Include CodeMirror JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.9/mode/javascript/javascript.min.js"></script>
+
+  <script>
+    // Initialize CodeMirror editors
+    const htmlEditor = CodeMirror(document.getElementById('htmlEditor'), {
+      lineNumbers: true,
+      mode: 'htmlmixed',
+      value: '<h1>Hello, World!</h1>',
+    });
+
+    const cssEditor = CodeMirror(document.getElementById('cssEditor'), {
+      lineNumbers: true,
+      mode: 'css',
+      value: 'body { background-color: lightblue; }',
+    });
+
+    const jsEditor = CodeMirror(document.getElementById('jsEditor'), {
+      lineNumbers: true,
+      mode: 'javascript',
+      value: 'console.log("JavaScript is running!");',
+    });
+
+    // Function to run the code
+    document.getElementById('runButton').addEventListener('click', () => {
+      const htmlCode = htmlEditor.getValue();
+      const cssCode = `<style>${cssEditor.getValue()}</style>`;
+      const jsCode = `<script>${jsEditor.getValue()}</script>`;
+
+      // Combine HTML, CSS, and JS into a single document
+      const fullCode = `${htmlCode}${cssCode}${jsCode}`;
+
+      // Display the result in the output box
+      const outputBox = document.getElementById('outputBox');
+      outputBox.innerHTML = fullCode;
+
+      // Execute any JavaScript code dynamically
+      const script = document.createElement('script');
+      script.textContent = jsEditor.getValue();
+      outputBox.appendChild(script);
+    });
+  </script>
+</body> 
+</html> 

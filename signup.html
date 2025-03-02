@@ -5,21 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Form</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(to right, #ff9966, #ff5e62);
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            width: 350px;
-        }
+       .container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%; /* Takes 90% width on small screens */
+    max-width: 400px; /* Prevents it from being too wide */
+    margin: 10vh auto; /* Centers vertically and horizontally */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .container {
+        width: 60%; /* Reduce width for tablets and larger screens */
+        max-width: 500px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        width: 40%; /* Further reduce width for larger screens */
+        max-width: 450px;
+    }
+}
+
         h2 {
             text-align: center;
             color: #333;

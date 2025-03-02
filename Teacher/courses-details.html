@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Courses</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .course, .chapter, .heading {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .add-btn {
+            margin-top: 10px;
+        }
+        .publish-btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div id="teacher-content">
+    <div class="container">
+        <h2 class="text-center mb-4">Manage Courses</h2>
+
+        <!-- Add Course Button -->
+        <button id="addCourseBtn" class="btn btn-primary">Add Course</button>
+
+        <!-- Courses Container -->
+        <div id="coursesContainer" class="mt-4"></div>
+    </div>
+
+    </div>
+    </div>
+    <script>
+        // Courses Container
+        const coursesContainer = document.getElementById('coursesContainer');
+
+        // Add Course Button
+        document.getElementById('addCourseBtn').addEventListener('click', function() {
+            const courseId = Date.now(); // Unique ID for the course
+            const courseHTML = `
+                <div class="course" id="course-${courseId}">
+                    <h3>Course Title</h3>
+                    <input type="text" class="form-control course-title" placeholder="Enter Course Title">
+                    <button class="btn btn-secondary addChapterBtn add-btn">Add Chapter</button>
+                    <button class="btn btn-success publish-btn" onclick="publishCourse('${courseId}')">Publish Course</button>
+                    <div class="chapters-container mt-3"></div>
+                </div>
+            `;
+            coursesContainer.insertAdjacentHTML('beforeend', courseHTML);
+
+            // Add Chapter Button for this course
+            const courseDiv = document.getElementById(`course-${courseId}`);
+            courseDiv.querySelector('.addChapterBtn').addEventListener('click', function() {
+                const chapterId = Date.now(); // Unique ID for the chapter
+                const chapterHTML = `
+                    <div class="chapter" id="chapter-${chapterId}">
+                        <h4>Chapter Title</h4>
+                        <input type="text" class="form-control chapter-title" placeholder="Enter Chapter Title">
+                        <button class="btn btn-info addHeadingBtn add-btn">Add Heading</button>
+                        <div class="headings-container mt-3"></div>
+                    </div>
+                `;
+                courseDiv.querySelector('.chapters-container').insertAdjacentHTML('beforeend', chapterHTML);
+
+                // Add Heading Button for this chapter
+                const chapterDiv = document.getElementById(`chapter-${chapterId}`);
+                chapterDiv.querySelector('.addHeadingBtn').addEventListener('click', function() {
+                    const headingId = Date.now(); // Unique ID for the heading
+                    const headingHTML = `
+                        <div class="heading" id="heading-${headingId}">
+                            <h5>Heading</h5>
+                            <input type="text" class="form-control heading-title" placeholder="Enter Heading Title">
+                            <textarea class="form-control heading-content mt-2" placeholder="Enter Paragraph Content"></textarea>
+                            <button class="btn btn-warning addParagraphBtn add-btn">Add Paragraph</button>
+                            <div class="paragraphs-container mt-3"></div>
+                        </div>
+                    `;
+                    chapterDiv.querySelector('.headings-container').insertAdjacentHTML('beforeend', headingHTML);
+
+                    // Add Paragraph Button for this heading
+                    const headingDiv = document.getElementById(`heading-${headingId}`);
+                    headingDiv.querySelector('.addParagraphBtn').addEventListener('click', function() {
+                        const paragraphHTML = `
+                            <textarea class="form-control heading-content mt-2" placeholder="Enter Paragraph Content"></textarea>
+                        `;
+                        headingDiv.querySelector('.paragraphs-container').insertAdjacentHTML('beforeend', paragraphHTML);
+                    });
+                });
+            });
+        });
+
+        // Publish Course Function
+        function publishCourse(courseId) {
+            const courseDiv = document.getElementById(`course-${courseId}`);
+            const courseTitle = courseDiv.querySelector('.course-title').value;
+
+            const chapters = [];
+            courseDiv.querySelectorAll('.chapter').forEach(chapterDiv => {
+                const chapterTitle = chapterDiv.querySelector('.chapter-title').value;
+
+                const headings = [];
+                chapterDiv.querySelectorAll('.heading').forEach(headingDiv => {
+                    const headingTitle = headingDiv.querySelector('.heading-title').value;
+
+                    const paragraphs = [];
+                    headingDiv.querySelectorAll('.heading-content').forEach(paragraph => {
+                        paragraphs.push(paragraph.value);
+                    });
+
+                    headings.push({
+                        title: headingTitle,
+                        paragraphs: paragraphs
+                    });
+                });
+
+                chapters.push({
+                    title: chapterTitle,
+                    headings: headings
+                });
+            });
+
+            const courseData = {
+                title: courseTitle,
+                chapters: chapters
+            };
+
+            console.log('Published Course Data:', courseData);
+            alert('Course Published Successfully! Check the console for the data.');
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

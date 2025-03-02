@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Queries</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div id="admin-content">
+    <div class="container">
+        <h2 class="text-center mb-4">Manage Queries</h2>
+        
+        <!-- Queries List -->
+        <h4 class="mt-4">Existing Queries</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Query</th>
+                    <th>Reply</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="queryList">
+                <!-- Queries will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+    </div>
+    </div>
+
+
+    <script>
+        // Sample queries data
+        const queries = [
+            { id: 1, query: "How do I reset my password?", reply: "" },
+            { id: 2, query: "Where can I find course materials?", reply: "" },
+        ];
+
+        const queryList = document.getElementById('queryList');
+
+        // Render queries
+        queries.forEach(query => {
+            let row = queryList.insertRow();
+            row.innerHTML = `<td>${query.id}</td><td>${query.query}</td>
+                            <td><textarea class="form-control reply-textarea" placeholder="Type your reply here..."></textarea></td>
+                            <td><button class='btn btn-success btn-sm' onclick="replyToQuery(${query.id})">Reply</button></td>`;
+        });
+
+        function replyToQuery(id) {
+            const replyTextarea = document.querySelector(`tr:nth-child(${id}) .reply-textarea`);
+            const reply = replyTextarea.value;
+            if (reply) {
+                alert(`Reply sent for Query ID ${id}: ${reply}`);
+                replyTextarea.value = ""; // Clear the textarea
+            } else {
+                alert("Please enter a reply.");
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -5,25 +5,34 @@
   box-sizing: border-box;
 }
 
+
 /* Body Styling */
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+}
+
+/* ................................................. */
+nav.html-menu ol {
+  list-style: none;
+  padding: 0; 
+  margin: 0; 
+  padding-left: 20px;
 }
 
 /* Navigation Menu */
 nav.html-menu {
   position: fixed;
-  top: 65px;
+  top: 50px;
   left: 0;
   width: 250px;
   height: 100vh;
-  background: white;
+  background: #E7E9EB;
   overflow-y: auto;
-  padding: 10px;
+  padding-top: 10px;
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 }
@@ -47,7 +56,7 @@ nav.html-menu ol {
 }
 
 nav.html-menu ol li {
-  padding: 10px;
+  padding: 5px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -60,13 +69,13 @@ nav.html-menu ol li a {
 
 nav.html-menu ol li a:hover {
   color: #007BFF;
+  background: gray;
 }
+/* ....................................................... */
 
-
-/* Content Area */
 #html-content {
-  margin-top: 20px;
-  margin-left: 150px;
+  margin-top: 100px;
+  margin-left: 250px;
   padding: 20px;
   flex-grow: 1;
   transition: margin-left 0.3s ease-in-out;
@@ -77,10 +86,11 @@ nav.html-menu ol li a:hover {
 }
 
 #html-content p {
-  background-color: green;
+  background-color: rgb(228, 247, 228);
   color: white;
   padding: 10px;
   border-radius: 5px;
+  color: black;
 }
 
 /* Responsive Adjustments */
@@ -108,7 +118,7 @@ nav.html-menu ol li a:hover {
   position: fixed;
   top: 80px;
   left: 10px;
-  z-index: 1000;
+  z-index: 0;
   padding: 5px;
   background: #007BFF;
   color: white;
@@ -130,3 +140,5 @@ nav.html-menu ol li a:hover {
 ::-webkit-scrollbar-thumb{
   background: rgb(204, 207, 204);
 }
+
+

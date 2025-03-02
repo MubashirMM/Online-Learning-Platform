@@ -23,7 +23,7 @@
     height: 100vh;
     background: rgb(239, 238, 238);
     overflow-y: auto;
-    padding: 10px;
+    /* padding: 10px; */
     z-index: 9999;
   }
   
@@ -46,7 +46,7 @@
   }
   
   nav.quiz-menu ol li {
-    padding: 10px;
+    padding: 5px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   
@@ -180,7 +180,7 @@
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
-    width: 35%;
+    width: 50%;
 }
 
 .quiz-cards button:hover {

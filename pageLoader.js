@@ -28,3 +28,23 @@ function loadPage(pageLink, targetElementId) {
         });
 }
  
+// function loadPage(pageLink, targetElementId) {
+//     // Create an iframe element
+//     const iframe = document.createElement("iframe");
+
+//     // Set the iframe source to the page link
+//     iframe.src = pageLink;
+
+//     // Set iframe styles to make it fit the container
+//     iframe.style.width = "100%";
+//     iframe.style.height = "100%";
+//     iframe.style.border = "none";
+
+//     // Clear the target element and append the iframe
+//     const targetElement = document.getElementById(targetElementId);
+//     targetElement.innerHTML = ""; // Clear existing content
+//     targetElement.appendChild(iframe);
+
+//     // Push state to history
+//     window.history.pushState({ path: pageLink }, "", pageLink);
+// }

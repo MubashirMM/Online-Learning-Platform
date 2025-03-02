@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect Online Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.40.0/min/vs/editor/editor.main.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background: #007bff;
+            color: white;
+            padding: 15px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .horizontal {
+            flex-direction: row;
+        }
+        .editor-container, .output-container {
+            flex: 1;
+            padding: 10px;
+        }
+        .horizontal .editor-container, .horizontal .output-container {
+            width: 50%;
+        }
+        #editor {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+        }
+        .output-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .controls {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>EduConnect Online Editor</h1>
+    <div class="controls">
+        <button class="btn" onclick="runCode()">Run</button>
+        <button class="btn" onclick="changeTheme()">Dark Theme</button>
+        <button class="btn" onclick="toggleLayout()">Change Dimensions</button>
+    </div>
+    <div class="container" id="layoutContainer">
+        <div class="editor-container">
+            <div id="editor"></div>
+        </div>
+        <div class="output-container">
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.40.0/min/vs/loader.min.js"></script>
+    <script>
+        let editor;
+        let isHorizontal = false;
+        require.config({ paths: { 'vs': 'https://unpkg.com/monaco-editor@0.40.0/min/vs' } });
+        require(["vs/editor/editor.main"], function () {
+            editor = monaco.editor.create(document.getElementById('editor'), {
+                value: `<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Hello EduConnect</h2>
+    <script>
+        console.log('JS Running');
+    <\/script>
+</body>
+</html>`,
+                language: "html",
+                theme: "vs-dark",
+            });
+        });
+
+        function runCode() {
+            const code = editor.getValue();
+            const iframe = document.getElementById("output");
+            try {
+                iframe.srcdoc = code;
+            } catch (error) {
+                iframe.srcdoc = `<pre style="color: red;">Error: ${error.message}</pre>`;
+            }
+        }
+
+        function changeTheme() {
+            const currentTheme = editor.getRawOptions().theme;
+            const newTheme = currentTheme === "vs-dark" ? "vs-light" : "vs-dark";
+            monaco.editor.setTheme(newTheme);
+            document.querySelector(".btn:nth-child(2)").textContent =
+                newTheme === "vs-dark" ? "Light Theme" : "Dark Theme";
+        }
+
+        function toggleLayout() {
+            const container = document.getElementById("layoutContainer");
+            isHorizontal = !isHorizontal;
+            container.className = isHorizontal ? "container horizontal" : "container";
+        }
+    </script>
+</body>
+</html>

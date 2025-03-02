@@ -1,0 +1,157 @@
+/* Global Styles */
+html, body {
+  height: 100%; 
+  overscroll-behavior: none;
+  /* overflow-x: hidden; */
+}
+ *{
+    /* outline: 1px solid red; */
+}
+
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+.main-content {
+  flex: 1; /* Pushes the footer down */
+}
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(204, 207, 204);
+}
+
+/* Media Queries for Smaller Screens */
+@media (max-width: 768px) {
+  .footer-container {
+    font-size: 14px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 375px) {
+  .footer-container {
+    font-size: 12px; /* Smaller font size for 375px screens */
+    padding: 10px; /* Reduced padding for 375px screens */
+  }
+}
+
+@media (max-width: 320px) {
+  .footer-container {
+    font-size: 11px; /* Smaller font size for 320px screens */
+    padding: 8px; /* Reduced padding for 320px screens */
+  }
+}
+/* ............................................................................... */
+ .faq-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h2 {
+            text-align: center;
+        }
+        details {
+            width: 100%;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        summary {
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            outline: none;
+        }
+        details[open] summary {
+            color: #007BFF;
+        }
+        details[open] {
+            background: #f9f9f9;
+        }
+        @media (max-width: 600px) {
+            .faq-container {
+                padding: 15px;
+            }
+            summary {
+                font-size: 14px;
+            }
+        }
+ /* ................................. */
+      
+      .footer {
+          background: #222;
+          color: #fff;
+          padding: 20px 0;
+          font-family: Arial, sans-serif;
+          z-index: 999;
+      }
+      
+      .footer-container {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          padding: 20px;
+          max-width: 1200px;
+          margin: auto;
+          
+      }
+      
+      .footer-section {
+          flex: 1;
+          min-width: 250px;
+          margin: 10px;
+      }
+      
+      .footer-section h4 {
+          margin-bottom: 10px;
+          border-bottom: 2px solid #f1c40f;
+          padding-bottom: 5px;
+      }
+      
+      .footer-section ul {
+          list-style: none;
+      }
+      
+      .footer-section ul li {
+          margin: 8px 0;
+      }
+      
+      .footer-section ul li a {
+          color: #f1c40f;
+          text-decoration: none;
+          transition: 0.3s;
+      }
+      
+      .footer-section ul li a:hover {
+          text-decoration: underline;
+      }
+      
+      .footer-bottom {
+          text-align: center;
+          padding: 10px;
+          background: #111;
+      }
+      
+      @media (max-width: 768px) {
+          .footer-container {
+              flex-direction: column;
+              text-align: center;
+          }
+      }
+      

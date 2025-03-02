@@ -24,7 +24,7 @@
     background: rgb(239, 238, 238);
     overflow-y: auto;
     padding: 10px;
-    z-index: 9999;
+    z-index: 999;
   }
   
   /* Hide Menu on Small Screens by Default */
@@ -170,24 +170,23 @@
 
 /* Button Styling */
 .exercise-cards button {
-    padding: 8px 15px;
-    font-size: 17px;
-    font-weight: bold;
-    background: green;
-    border-radius: 20px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 40%;
-    margin: 40px;
-    height: 8vh;
-} 
+  padding: 8px 10px; /* Adjusted padding */
+  font-size: 14px; /* Adjusted font size */
+  font-weight: bold;
+  background: green;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 35%;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
 
 .exercise-cards button:hover {
-    background: white;
-    background: rgb(3, 154, 3);
-
+  background: rgb(3, 154, 3);
 }
 
 /* Responsive Layout */
