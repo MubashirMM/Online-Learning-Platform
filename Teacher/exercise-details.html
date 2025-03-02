@@ -6,7 +6,6 @@
     <title>Manage Exercises</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-
         .container {
             max-width: 800px;
             margin: auto;
@@ -15,60 +14,150 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        .question-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .question-section:not(:first-child) {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="card-container">
         <div id="teacher-content">
-    <div class="container">
-        <h2 class="text-center mb-4">Manage Exercises</h2>
-        
-        <!-- Create Exercise Form -->
-        <form id="exerciseForm">
+            <div class="container">
+                <h2 class="text-center mb-4">Manage Exercises</h2>
+                
+                <!-- Create Exercise Form -->
+                <form id="exerciseForm">
+                    <div class="mb-3">
+                        <label class="form-label">Exercise Title</label>
+                        <input type="text" class="form-control" id="exerciseTitle" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Exercise Description</label>
+                        <textarea class="form-control" id="exerciseDesc" required></textarea>
+                    </div>
+                    <button type="button" id="addQuestionBtn" class="btn btn-secondary">Add Question</button>
+                    <button type="submit" class="btn btn-primary">Add Exercise</button>
+                </form>
+                
+                <hr>
+                
+                <!-- Exercise List -->
+                <h4 class="mt-4">Existing Exercises</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="exerciseList">
+                        <!-- Exercises will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template for Question Section -->
+    <template id="questionTemplate">
+        <div class="question-section">
             <div class="mb-3">
-                <label class="form-label">Exercise Title</label>
-                <input type="text" class="form-control" id="exerciseTitle" required>
+                <label class="form-label">Question</label>
+                <input type="text" class="form-control question" required>
             </div>
             <div class="mb-3">
-                <label class="form-label">Exercise Description</label>
-                <textarea class="form-control" id="exerciseDesc" required></textarea>
+                <label class="form-label">Option 1</label>
+                <input type="text" class="form-control option1" required>
             </div>
-            <button type="submit" class="btn btn-primary">Add Exercise</button>
-        </form>
-        
-        <hr>
-        
-        <!-- Exercise List -->
-        <h4 class="mt-4">Existing Exercises</h4>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="exerciseList">
-                <!-- Exercises will be dynamically added here -->
-            </tbody>
-        </table>
-    </div>
-    </div>
-    </div>
-    
+            <div class="mb-3">
+                <label class="form-label">Option 2</label>
+                <input type="text" class="form-control option2" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Option 3</label>
+                <input type="text" class="form-control option3">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Option 4</label>
+                <input type="text" class="form-control option4">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Correct Answer</label>
+                <select class="form-control correctAnswer" required>
+                    <option value="">Select Correct Answer</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                    <option value="4">Option 4</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-danger btn-sm removeQuestionBtn">Remove Question</button>
+        </div>
+    </template>
 
     <script>
-        document.getElementById('exerciseForm').addEventListener('submit', function(event) {
+        // Add Question Button Functionality
+        document.getElementById('addQuestionBtn').addEventListener('click', function () {
+            const template = document.getElementById('questionTemplate').content.cloneNode(true);
+            const questionSection = template.querySelector('.question-section');
+            document.getElementById('exerciseForm').insertBefore(template, document.getElementById('exerciseForm').lastElementChild);
+
+            // Remove Question Button Functionality
+            questionSection.querySelector('.removeQuestionBtn').addEventListener('click', function () {
+                questionSection.remove();
+            });
+        });
+
+        // Exercise Form Submission
+        document.getElementById('exerciseForm').addEventListener('submit', function (event) {
             event.preventDefault();
-            let title = document.getElementById('exerciseTitle').value;
-            let desc = document.getElementById('exerciseDesc').value;
-            let table = document.getElementById('exerciseList');
-            let row = table.insertRow();
+            const title = document.getElementById('exerciseTitle').value;
+            const desc = document.getElementById('exerciseDesc').value;
+            const questions = document.querySelectorAll('.question-section');
+
+            // Collect Questions and Options
+            const exerciseData = {
+                title: title,
+                description: desc,
+                questions: []
+            };
+
+            questions.forEach((question, index) => {
+                const questionText = question.querySelector('.question').value;
+                const option1 = question.querySelector('.option1').value;
+                const option2 = question.querySelector('.option2').value;
+                const option3 = question.querySelector('.option3').value;
+                const option4 = question.querySelector('.option4').value;
+                const correctAnswer = question.querySelector('.correctAnswer').value;
+
+                exerciseData.questions.push({
+                    question: questionText,
+                    options: [option1, option2, option3, option4].filter(opt => opt), // Filter out empty options
+                    correctAnswer: correctAnswer
+                });
+            });
+
+            console.log(exerciseData); // For debugging or further processing
+
+            // Add Exercise to Table
+            const table = document.getElementById('exerciseList');
+            const row = table.insertRow();
             row.innerHTML = `<td>#</td><td>${title}</td><td>${desc}</td>
                             <td><button class='btn btn-warning btn-sm'>Edit</button>
                                 <button class='btn btn-danger btn-sm'>Delete</button></td>`;
+
+            // Reset Form
             document.getElementById('exerciseForm').reset();
+            document.querySelectorAll('.question-section').forEach(section => section.remove());
         });
     </script>
 

@@ -45,6 +45,11 @@
 
 .navbar-menu li a:hover {
   color: #FACC15;
+  /* border-bottom: 2px solid #FACC15; */
+  background-color: #f0f0f0;
+  transition: all 0.3s ease;
+  transform: scale(0.6.);
+  border-radius: 10px;
 }
 
 /* Submenu (First Level) */
@@ -147,6 +152,10 @@
 
 .login-dropdown li:hover {
   background-color: #f0f0f0;
+  transition: all 0.3s ease;
+  transform: scale(0.6.);
+  border-radius: 10px;
+  color: #FACC15;
 }
 
 #quiz-exercise {

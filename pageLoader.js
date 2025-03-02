@@ -27,24 +27,58 @@ function loadPage(pageLink, targetElementId) {
             console.error("Error:", error);
         });
 }
- 
+
+
+
+
+
+
+
+
+
+
+// ...........................................................
+// let currentPage = ""; // Track currently loaded page
+
 // function loadPage(pageLink, targetElementId) {
-//     // Create an iframe element
-//     const iframe = document.createElement("iframe");
+//     let iframe = document.getElementById("dynamic-iframe");
 
-//     // Set the iframe source to the page link
-//     iframe.src = pageLink;
+//     if (!iframe) {
+//         iframe = document.createElement("iframe");
+//         iframe.id = "dynamic-iframe";
+//         iframe.style.width = "100%";
+//         iframe.style.height = "100%";
+//         iframe.style.border = "none";
 
-//     // Set iframe styles to make it fit the container
-//     iframe.style.width = "100%";
-//     iframe.style.height = "100%";
-//     iframe.style.border = "none";
+//         const targetElement = document.getElementById(targetElementId);
+//         if (!targetElement) {
+//             console.error("Target element not found:", targetElementId);
+//             return;
+//         }
 
-//     // Clear the target element and append the iframe
-//     const targetElement = document.getElementById(targetElementId);
-//     targetElement.innerHTML = ""; // Clear existing content
-//     targetElement.appendChild(iframe);
+//         targetElement.innerHTML = ""; // Clear previous content
+//         targetElement.appendChild(iframe);
+//     }
 
-//     // Push state to history
+//     // Prevent unnecessary reloads
+//     if (currentPage === pageLink) return;
+//     currentPage = pageLink;
+
+//     iframe.src = "";
+//     setTimeout(() => iframe.src = pageLink, 10);
+
+//     // Update browser history
 //     window.history.pushState({ path: pageLink }, "", pageLink);
 // }
+
+// // Handle browser back/forward buttons
+// window.addEventListener("popstate", function (event) {
+//     if (event.state && event.state.path) {
+//         loadPage(event.state.path, "content");
+//     }
+// });
+
+// // Load the initial page after DOM is loaded
+// document.addEventListener("DOMContentLoaded", function () {
+//     loadPage("index.html", "content");
+// });
