@@ -80,7 +80,6 @@ nav.dash-menu ol li a:hover {
 /* Toggle Button */
 #menu-toggle {
     position: fixed;
-    top: 80px;
     left: 10px;
     z-index: 11000;
     padding: 5px 10px;
@@ -121,7 +120,16 @@ nav.dash-menu ol li a:hover {
 .bg-courses {
     background: linear-gradient(135deg, #fc4a1a, #f7b733);
 }
+.bg-courses {
+    background: linear-gradient(135deg, #fc4a1a, #f7b733);
+}
+.bg-courses {
+    background: linear-gradient(135deg, #fc4a1a, #f7b733);
+}
 
+.bg-reference{
+    background: linear-gradient(135deg, #16e0cf, #f7b733);
+}
 /* Scrollbar */
 ::-webkit-scrollbar {
     width: 12px;

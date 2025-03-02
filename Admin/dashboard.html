@@ -59,17 +59,17 @@
                     </div>
                     <h4 class="mt-3">Courses</h4>
                     <p class="fw-bold">8 Available</p>
-                    <button class="btn btn-warning">Manage</button>
+                    <button class="btn btn-warning" onclick="event.preventDefault(); loadPage('Admin/courses-details.html','admin-content')">Manage</button>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card dashboard-card text-center p-3">
-                    <div class="icon-container bg-courses mx-auto">
+                    <div class="icon-container bg-reference mx-auto">
                         <i class="fas fa-book"></i>
                     </div>
                     <h4 class="mt-3">References</h4>
                     <p class="fw-bold">8 Available</p>
-                    <button class="btn btn-warning">Manage</button>
+                    <button class="btn btn-dark" onclick="event.preventDefault(); loadPage('Admin/references-details.html','admin-content')">Manage</button>
                 </div>
             </div>
             <div class="col-md-4">
@@ -79,7 +79,7 @@
                     </div>
                     <h4 class="mt-3">Video Tutorials</h4>
                     <p class="fw-bold">8 Available</p>
-                    <button class="btn btn-warning">Manage</button>
+                    <button class="btn btn-light" onclick="event.preventDefault(); loadPage('Admin/addVideoTutorials.html','admin-content')">Manage</button>
                 </div>
             </div>
             <div class="col-md-4">
@@ -89,7 +89,7 @@
                     </div>
                     <h4 class="mt-3">Teachers</h4>
                     <p class="fw-bold">8 Available</p>
-                    <button class="btn btn-warning">Manage</button>
+                    <button class="btn btn-secondary" onclick="event.preventDefault(); loadPage('Admin/teachers-details.html','admin-content')">Manage</button>
                 </div>
             </div>
             <div class="col-md-4">
@@ -99,7 +99,7 @@
                     </div>
                     <h4 class="mt-3">Quries</h4>
                     <p class="fw-bold">8 Available</p>
-                    <button class="btn btn-warning" onclick="event.preventDefault(); loadPage('Admin/quries-details.html','admin-content')">Manage</button>
+                    <button class="btn btn-info" onclick="event.preventDefault(); loadPage('Admin/quries-details.html','admin-content')">Manage</button>
                 </div>
             </div>
         </div>

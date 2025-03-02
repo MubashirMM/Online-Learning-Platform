@@ -37,14 +37,12 @@
 </head>
 
 <body>
-    <!-- Menu Toggle Button (Visible on Small Screens) -->
     <button id="menu-toggle">Menu</button>
-
     <nav class="html-reference-menu">
         <ol>
             <li><h2>HTML References</h2></li>
-            <li><a href="#" onclick="event.preventDefault(); loadPage('References/HTML-References/HTML-by-alphabet', 'content'); setActive(this);">HTML by Alphabet</a></li>
-            <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/introduction.html', 'html-content'); setActive(this);">HTML by Category</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Reference/HTML-By-Alphabet.html','content')" >HTML by Alphabet</a></li>
+            <li><a href="#" onclick="event.preventDefault(); loadPage('Reference/HTML-by-Category.html', 'html-reference'); setActive(this);">HTML by Category</a></li>
             <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/editors.html', 'html-content'); setActive(this);">HTML Browser support</a></li>
             <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/editors.html', 'html-content'); setActive(this);">HTML Attributes</a></li>
             <li><a href="#" onclick="event.preventDefault(); loadPage('HTML/editors.html', 'html-content'); setActive(this);">HTML Globale Attributes</a></li>
@@ -66,9 +64,7 @@
 
     <div id="html-reference-content">
 
-    
- 
-
+    <div id="html-reference">
     <div class="container">
         <h1 class="text-center">HTML Tags Reference</h1>
         <table class="table table-bordered">
@@ -235,6 +231,8 @@
             </tbody>
         </table>
     </div>
+</div>
+</div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -242,6 +240,8 @@
 </html>
        </div>
 
+
+       
     <script>
         // Function to set active state on menu items
         function setActive(clickedElement) {
@@ -252,5 +252,6 @@
         }
     </script>
     <script src="../refreshPage.js"></script>
+    <script src="../pageLoader.js"></script>
 </body>
 </html>

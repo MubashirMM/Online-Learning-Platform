@@ -8,6 +8,7 @@
   box-shadow: 0px 0px 2px 2px #bbb;
   padding: 10px 20px;
   position: relative;
+  z-index: auto;
 }
 
 /* Style for the Navbar Logo */
@@ -15,6 +16,7 @@
   height: 30px;  /* Adjust height as needed */
   width: auto;   /* Maintain aspect ratio */
   mix-blend-mode: multiply;
+  margin-left: 10px;
 }
 
 .navbar-menu {

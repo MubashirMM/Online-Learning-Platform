@@ -49,6 +49,76 @@ html, body {
   }
 }
 /* ............................................................................... */
+/* Base Styles for Scroll Bar */
+.scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  background-color: #000;
+  padding: 8px 0; /* Reduced padding */
+  position: fixed;
+  white-space: nowrap;
+  margin-top: 10vh;
+  z-index: 999;
+  height: 40px; /* Explicit height */
+}
+
+.scroll-item {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 15px; /* Reduced padding */
+  margin: 0 5px;
+  font-size: 14px; /* Reduced font size */
+}
+
+.scroll-item:hover {
+  background-color: #555;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .scroll-item {
+      padding: 6px 12px; /* Smaller padding */
+      font-size: 12px; /* Smaller font size */
+  }
+
+  .scroll-container {
+      padding: 6px 0; /* Reduce container padding */
+      height: 35px; /* Reduced height */
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-item {
+      padding: 4px 10px; /* Even smaller padding */
+      font-size: 10px; /* Even smaller font size */
+  }
+
+  .scroll-container {
+      padding: 4px 0; /* Further reduce container padding */
+      height: 30px; /* Further reduced height */
+  }
+}
+
+/* 325px Media Query */
+@media (max-width: 325px) {
+  .scroll-item {
+      padding: 3px 8px; /* Minimal padding */
+      font-size: 9px; /* Minimal font size */
+  }
+
+  .scroll-container {
+      padding: 3px 0; /* Minimal padding */
+      height: 25px; /* Minimal height */
+  }
+}
+/* ............................................................................... */
  .faq-container {
             max-width: 800px;
             margin: auto;

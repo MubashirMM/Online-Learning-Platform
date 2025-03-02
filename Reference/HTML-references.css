@@ -116,10 +116,10 @@
   /* Toggle Button */
   #menu-toggle {
     position: fixed;
-    top: 80px;
-    left: 10px;
-    z-index: 0;
-    padding: 5px;
+    top: 60px;
+    /* left: 10px; */
+    z-index: 1000;
+    /* padding: 5px; */
     background: #007BFF;
     color: white;
     border: none;
